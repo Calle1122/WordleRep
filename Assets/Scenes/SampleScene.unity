@@ -25581,6 +25581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wordsTxtFile: {fileID: 4900000, guid: fcd49353d7661a246ab84265e3f2bb32, type: 3}
+  validInputTxtFile: {fileID: 4900000, guid: ff80964c59cd48b4aa1eea2a533cb8f6, type: 3}
   correctWord: 
 --- !u!4 &2113163608
 Transform:

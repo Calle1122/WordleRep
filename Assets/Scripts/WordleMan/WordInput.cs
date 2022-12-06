@@ -12,6 +12,7 @@ public class WordInput : MonoBehaviour
 
     public bool inputEnabled = true;
 
+    private WordGenerator _wordGen;
     private WordAreaManager _wordMan;
     private WordComparer _wordComparer;
     
@@ -22,6 +23,7 @@ public class WordInput : MonoBehaviour
     {
         _wordMan = GetComponent<WordAreaManager>();
         _wordComparer = GetComponent<WordComparer>();
+        _wordGen = GetComponent<WordGenerator>();
         
         _keyInputs.Add("Q");
         _keyInputs.Add("W");
@@ -129,10 +131,17 @@ public class WordInput : MonoBehaviour
                 _wordComparer.hasEnteredLastWord = true;
             }
 
-            _wordMan.activeRow.GetComponent<CameraShake>().shouldShake = true;
+            if (_wordGen.allWordsHash.Contains(enteredString))
+            {
+                _wordMan.activeRow.GetComponent<CameraShake>().shouldShake = true;
             
-            _wordComparer.CompareWords();
-            _wordMan.NextRowActive();
+                _wordComparer.CompareWords();
+                _wordMan.NextRowActive();
+            }
+            else
+            {
+                Debug.Log("Not a valid word!");
+            }
         }
     }
     

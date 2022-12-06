@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class WordGenerator : MonoBehaviour
 {
-    public TextAsset wordsTxtFile;
+    public TextAsset wordsTxtFile, validInputTxtFile;
     public string correctWord;
-    
-    private string[] _allWords;
+
+    public HashSet<string> allWordsHash = new HashSet<string>();
+
+    private string[] _allWords, _allValidInput;
 
     private void Start()
     {
@@ -16,6 +18,16 @@ public class WordGenerator : MonoBehaviour
         {
             _allWords = ( wordsTxtFile.text.Split( '\n' ) );
             correctWord = _allWords[UnityEngine.Random.Range(0,_allWords.Length)];
+            
+            _allValidInput = ( validInputTxtFile.text.Split( '\n' ) );
+            foreach (string i in _allValidInput)
+            {
+                string newString = i;
+                newString = newString.Trim();
+                newString = newString.ToUpper();
+                
+                allWordsHash.Add(newString);
+            }
         }
     }
 }
