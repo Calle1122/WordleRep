@@ -50,17 +50,46 @@ public class WordComparer : MonoBehaviour
         }
 
         int charIndex = 0;
-        
+
+        Dictionary<char, int> coloredCounter = new Dictionary<char, int>();
+
+        foreach (char c in enteredChars)
+        {
+            if (!coloredCounter.ContainsKey(c))
+            {
+                coloredCounter.Add(c, 0);
+            }
+        }
+
         foreach (char c in enteredChars)
         {
             if (c == correctChars[charIndex])
             {
-                _colorMan.SetBackColor(charIndex, "green", c);
+                if (coloredCounter[c] < _wordGen.charCount[c])
+                {
+                    _colorMan.SetBackColor(charIndex, "green", c);
+                    coloredCounter[c]++;
+                }
             }
-            
-            else if (correctChars.Contains(c))
+
+            charIndex++;
+            if (charIndex == correctChars.Length)
             {
-                _colorMan.SetBackColor(charIndex, "yellow", c);
+                charIndex = correctChars.Length - 1;
+            }
+        }
+
+        charIndex = 0;
+        
+        foreach (char c in enteredChars)
+        {
+            if (correctChars.Contains(c) && c != correctChars[charIndex])
+            {
+                if (coloredCounter[c] < _wordGen.charCount[c])
+                {
+                    _colorMan.SetBackColor(charIndex, "yellow", c);
+                    coloredCounter[c]++;
+                }
             }
 
             else

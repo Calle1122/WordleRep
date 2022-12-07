@@ -25610,6 +25610,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39819a47b6c250b44ae50eebe815c855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invalidPrefab: {fileID: 7005590495711775115, guid: a6524f03d4e6f384db92182e0360572b, type: 3}
+  canvasParent: {fileID: 544842859}
   camShaker: {fileID: 519420030}
   shakeMode: 1
   enteredString: 

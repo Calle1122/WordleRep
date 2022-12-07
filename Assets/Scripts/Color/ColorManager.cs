@@ -41,15 +41,21 @@ public class ColorManager : MonoBehaviour
             case "yellow":
 
                 _activeRowBacks[backIndex].color = _yellow;
-                _keyDic.keyDic[c.ToString()].image.color = _yellow;
-                _keyDic.keyDic[c.ToString()].GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
+                if (_keyDic.keyDic[c.ToString()].image.color != _green)
+                {
+                    _keyDic.keyDic[c.ToString()].image.color = _yellow;
+                    _keyDic.keyDic[c.ToString()].GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
+                }
 
                 break;
             
             case "grey":
 
-                _keyDic.keyDic[c.ToString()].image.color = _grey;
-                _keyDic.keyDic[c.ToString()].GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
+                if (_keyDic.keyDic[c.ToString()].image.color != _green && _keyDic.keyDic[c.ToString()].image.color != _yellow)
+                {
+                    _keyDic.keyDic[c.ToString()].image.color = _grey;
+                    _keyDic.keyDic[c.ToString()].GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
+                }
                 
                 break;
         }

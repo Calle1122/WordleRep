@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class WordInput : MonoBehaviour
 {
+    [SerializeField] private GameObject invalidPrefab, canvasParent;
+    
     [SerializeField] private CameraShake camShaker;
     public bool shakeMode = true;
     
@@ -140,7 +142,7 @@ public class WordInput : MonoBehaviour
             }
             else
             {
-                Debug.Log("Not a valid word!");
+                Instantiate(invalidPrefab, canvasParent.transform);
             }
         }
     }
